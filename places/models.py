@@ -18,7 +18,12 @@ class Image(models.Model):
         Place, verbose_name='Место картинки',
         related_name='images', on_delete=models.CASCADE
     )
-    number_of_image = models.PositiveIntegerField(verbose_name='Номер картинки')
+    number_of_image = models.PositiveIntegerField(
+        default=0, verbose_name='Номер картинки'
+    )
     
     def __str__(self):
         return f'{self.number_of_image} {self.place}'
+
+    class Meta(object):
+        ordering = ['number_of_image']
