@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+
 from .models import Place
 
 
@@ -32,5 +33,21 @@ def index(request):
 
 def post(request, place_id):
     place = get_object_or_404(Place, id=place_id)
-    response = HttpResponse(place.title)
+    place_details = {
+        'title': place.title,
+        'imgs': [image.picture.url for image in place.images.all()],
+        'description_short': place.description_short,
+        'description_long': place.description_long,
+        'coordinates': {
+            'lat': place.lat,
+            'lng': place.lng
+        }
+    }
+    response = JsonResponse(
+        place_details, safe=True,
+        json_dumps_params={
+            'ensure_ascii': False, 
+            'indent': 4
+        }
+    )
     return response
