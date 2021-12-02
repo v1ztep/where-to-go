@@ -11,6 +11,7 @@ from .models import Place
 class ImageAdmin(SortableAdminMixin, admin.ModelAdmin):
     raw_id_fields = ["place"]
 
+
 class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
     readonly_fields = ['preview_image']
@@ -25,6 +26,7 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
                 height='200px',
             )
         )
+
 
 @admin.register(Place)
 class PlaceAdmin(admin.ModelAdmin):
