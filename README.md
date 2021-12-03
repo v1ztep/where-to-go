@@ -35,7 +35,7 @@ python manage.py runserver
 
 - Создайте суперпользователя с помощью команды:
 ```
-python manage.py create superuser
+python manage.py createsuperuser
 ```
 Ссылка на панель администратора: `http://127.0.0.1:8000/admin/`. 
 В админ панеле вы можете наполнять места(координаты), их описание и фотографии.
