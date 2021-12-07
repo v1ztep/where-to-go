@@ -46,7 +46,7 @@ python manage.py createsuperuser
 Вы можете использовать специальную команду для подгрузки новых локаций (можно 
 добавлять множество ссылок через пробел):
 ```
-python manage.py load_place "url_to_json ..."
+python manage.py load_place url_to_json
 ```
 Внутри должен быть json формат вида:
 ```
@@ -65,6 +65,5 @@ python manage.py load_place "url_to_json ..."
     },
 }
 ```
-
 
 Тестовые данные взяты с сайта [KudaGo](https://kudago.com/).
