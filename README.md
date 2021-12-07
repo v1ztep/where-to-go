@@ -3,7 +3,7 @@
 Вы можете выбрать места на карте и получить больше информации по каждой точке.
 
 Демо-версия сайта: [v1ztep.pythonanywhere.com](https://v1ztep.pythonanywhere.com/)
-![png](media/where_to_go.png)
+![png](github_preview/where_to_go.png)
 
 ## Настройки
 
