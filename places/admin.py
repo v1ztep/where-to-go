@@ -20,11 +20,8 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
 
     def preview_image(self, obj):
         return format_html(
-            '<img src="{url}" width="{width}" height={height} />'.format(
-                url=obj.picture.url,
-                width='auto',
-                height='200px',
-            )
+            '<img src="{}" width="{}" height={} />',
+            obj.picture.url, 'auto', '200px'
         )
 
 
