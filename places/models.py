@@ -22,7 +22,7 @@ class Image(models.Model):
         related_name='images', on_delete=models.CASCADE
     )
     number_of_image = models.PositiveIntegerField(
-        default=0, verbose_name='Номер картинки'
+        default=0, verbose_name='Номер картинки', blank=True
     )
     
     def __str__(self):
