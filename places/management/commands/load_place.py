@@ -19,19 +19,19 @@ class Command(BaseCommand):
         for url in options.get('urls'):
             response = requests.get(url, allow_redirects=False)
             response.raise_for_status()
-            detail_place = response.json()
+            place_detail = response.json()
 
             place, _ = Place.objects.get_or_create(
-                title = detail_place['title'],
+                title = place_detail['title'],
                 defaults = {
-                    'description_short': detail_place['description_short'],
-                    'description_long': detail_place['description_long'],
-                    'lng': detail_place['coordinates']['lng'],
-                    'lat': detail_place['coordinates']['lat']
+                    'description_short': place_detail['description_short'],
+                    'description_long': place_detail['description_long'],
+                    'lng': place_detail['coordinates']['lng'],
+                    'lat': place_detail['coordinates']['lat']
                 }
             )
 
-            for image_numb, image_url in enumerate(detail_place['imgs'], start=1):
+            for image_numb, image_url in enumerate(place_detail['imgs'], start=1):
                 response = requests.get(image_url, allow_redirects=False)
                 response.raise_for_status()
                 content = ContentFile(response.content)
