@@ -16,12 +16,12 @@ class Command(BaseCommand):
         parser.add_argument('urls', nargs='+', type=str)
 
     def handle(self, *args, **options):
-        for url in options.get('urls')[0].split(' '):
+        for url in options.get('urls'):
             response = requests.get(url, allow_redirects=False)
             response.raise_for_status()
             detail_place = response.json()
 
-            place, created = Place.objects.get_or_create(
+            place, _ = Place.objects.get_or_create(
                 title = detail_place['title'],
                 defaults = {
                     'description_short': detail_place['description_short'],
